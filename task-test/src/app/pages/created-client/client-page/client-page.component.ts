@@ -10,8 +10,8 @@ import { Router } from '@angular/router';
 export class ClientPageComponent implements OnInit {
   coordinators!: any[];
   clientTypes!: any[];
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
   clientForm!: FormGroup;
+  constructor(private formBuilder: FormBuilder, private router: Router) {}
   ngOnInit(): void {
     this.coordinators = [
       { name: 'Jhones' },
@@ -41,17 +41,7 @@ export class ClientPageComponent implements OnInit {
       sendSms: [],
     });
   }
-  log() {
-    console.log(this.clientForm.get('coordinatorName')?.value);
-    console.log(this.clientForm.get('lastName')?.value);
-    console.log(this.clientForm.get('firstName')?.value);
-    console.log(this.clientForm.get('phoneNumber')?.value);
-    console.log(this.clientForm.get('gender')?.value);
-    console.log(this.clientForm.get('clientType')?.value);
-    console.log(this.clientForm.get('sendSms')?.value);
-    console.log(this.clientForm.get('middleName')?.value);
-    console.log(this.clientForm.get('date')?.value);
-  }
+
   goNextPage(){
     this.router.navigate(['/client-form/address'])
   }

@@ -1,0 +1,119 @@
+<body>
+  <form class="form" [formGroup]="identityForm">
+   <!-- documenttype -->
+
+   <mat-form-field appearance="fill">
+    <mat-label class="form-field__label">Select Document Type</mat-label>
+    <mat-select formControlName="documentType" required="true">
+      <mat-option *ngFor="let type of documentTypes" [value]="type">
+        <p>
+          {{ type.name }}
+        </p>
+      </mat-option>
+    </mat-select>
+    <div matSuffix style="display: flex">
+      <mat-icon>keyboard_arrow_down</mat-icon>
+      <button
+        type="button"
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="identityForm.get('documentType')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </div>
+    <mat-error> Please Select at least One Client Group</mat-error>
+  </mat-form-field>
+   <!-- Series -->
+   <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="form-field__label">Series</mat-label>
+    <input
+      formControlName="series"
+      matInput
+      type="text"
+      placeholder="Series"
+    />
+    <button
+      type="button"
+      matSuffix
+      mat-icon-button
+      type="button"
+      aria-label="Clear"
+      (click)="identityForm.get('series')?.setValue(null)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error><p>This Field Is Required</p></mat-error>
+  </mat-form-field>
+   <!-- Number -->
+   
+   <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="form-field__label">Number</mat-label>
+    <input
+      matInput
+      type="number"
+      formControlName="number"
+      placeholder="Number"
+    />
+    <button
+      type="button"
+      matSuffix
+      mat-icon-button
+      type="button"
+      aria-label="Clear"
+      (click)="identityForm.get('number')?.setValue(null)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error
+      ><p>This Field Is Required And Must Contain only numbers</p></mat-error
+    >
+  </mat-form-field>
+
+   <!-- Issued by -->
+   <mat-form-field class="form-field" appearance="fill">
+    <mat-label class="form-field__label">Issued By</mat-label>
+    <input
+      formControlName="issuer"
+      matInput
+      type="text"
+      placeholder="Issued By"
+    />
+    <button
+      type="button"
+      matSuffix
+      mat-icon-button
+      type="button"
+      aria-label="Clear"
+      (click)="identityForm.get('issuer')?.setValue(null)"
+    >
+      <mat-icon>close</mat-icon>
+    </button>
+    <mat-error><p>This Field Is Required</p></mat-error>
+  </mat-form-field>
+   <!-- date of issue -->
+   <mat-form-field appearance="fill" class="form-field">
+    <mat-label class="form-field__label">Choose The Date of Issue</mat-label>
+    <input
+      matInput
+      [matDatepicker]="picker"
+      required="true"
+      formControlName="dateOfIssue"
+    />
+    <mat-hint>MM/DD/YYYY</mat-hint>
+    <mat-datepicker-toggle
+      matSuffix
+      [for]="picker"
+      class="calendar-icon"
+    ></mat-datepicker-toggle>
+    <mat-datepicker #picker></mat-datepicker>
+  </mat-form-field>
+
+   <!-- file
+   -->
+   <button mat-raised-button color="primary" [disabled]="identityForm.invalid" (click)="goNextPage()">
+    Finalize
+  </button>
+  </form>
+</body>

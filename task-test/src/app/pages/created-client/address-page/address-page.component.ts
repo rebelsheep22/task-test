@@ -29,7 +29,6 @@ export class AddressPageComponent implements OnInit {
     this.countries$ = this.countriesService.getCountries();
   }
   getCity(n : string){
-    console.log(n)
     this.chosenCities$ = this.countriesService.getCities(n);
   }
   buildForm() {
@@ -49,7 +48,7 @@ export class AddressPageComponent implements OnInit {
     })
   }
   goNextPage(){
-    this.router.navigate(['/client-form/address'])
+    this.router.navigate(['/client-form/identity'])
   }
 
 }

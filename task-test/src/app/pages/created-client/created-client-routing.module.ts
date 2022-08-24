@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { ClientPageComponent } from './client-page/client-page.component';
 import { CreatedClientComponent } from './created-client.component';
 
 const routes: Routes = [
@@ -17,6 +16,10 @@ const routes: Routes = [
     {
       path: 'address',
       loadChildren: () => import('./address-page/address-page.module').then((m)=>m.AddressPageModule) 
+    },
+    {
+      path: 'identity',
+      loadChildren: () => import('./identity-page/identity-page.module').then((m)=>m.IdentityPageModule) 
     }
   ]
   }
