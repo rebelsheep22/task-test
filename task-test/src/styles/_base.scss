@@ -1,0 +1,35 @@
+@use "src/styles/variables/colors" as *;
+
+/* scrollbar width */
+::-webkit-scrollbar {
+  width: 2px;
+  position: absolute;
+  top: 50px;
+}
+
+/* scrollbar track */
+::-webkit-scrollbar-track {
+  border-radius: 2px;
+  background-color: $twilightGrey;
+}
+
+/* scrollbar thumb */
+::-webkit-scrollbar-thumb {
+  background: $dynamicBlue;
+}
+
+/* scrollbar thumb on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #075f81;
+}
+
+button.mat-button-base.disabled-button {
+  pointer-events: none;
+  color: red;
+  background-color: #32bdf1;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}

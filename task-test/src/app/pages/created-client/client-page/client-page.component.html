@@ -1,0 +1,178 @@
+<body>
+  <form class="form" [formGroup]="clientForm">
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Last Name</mat-label>
+      <input
+        formControlName="lastName"
+        matInput
+        type="text"
+        placeholder="Last Name"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="clientForm.get('lastName')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error><p>This Field Is Required</p></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">First Name</mat-label>
+      <input
+        matInput
+        formControlName="firstName"
+        type="text"
+        placeholder="First Name"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="clientForm.get('firstName')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error><p>This Field Is Required</p></mat-error>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Middle name</mat-label>
+      <input
+        formControlName="middleName"
+        matInput
+        type="text"
+        placeholder="Middle Name"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="clientForm.get('middleName')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Phone Number</mat-label>
+      <input
+        matInput
+        type="text"
+        formControlName="phoneNumber"
+        placeholder="Phone Number"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="clientForm.get('phoneNumber')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error
+        ><p>This Field Is Required And Must Contain 11 numbers</p></mat-error
+      >
+    </mat-form-field>
+
+    <mat-radio-group
+      aria-label="Gender"
+      formControlName="gender"
+      class="form-field__radio"
+    >
+      <h4>Please Specify Gender:</h4>
+      <mat-radio-button type="button" value="male">Male</mat-radio-button>
+      <mat-radio-button type="button" value="female">Female</mat-radio-button>
+      <mat-radio-button type="button" value="other">Other</mat-radio-button>
+    </mat-radio-group>
+
+    <mat-form-field appearance="fill">
+      <mat-label class="form-field__label">Select Client Group</mat-label>
+      <mat-select formControlName="clientType" required="true" multiple="true">
+        <mat-option *ngFor="let type of clientTypes" [value]="type">
+          <p>
+            {{ type }}
+          </p>
+        </mat-option>
+      </mat-select>
+      <div matSuffix style="display: flex">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <button
+          type="button"
+          mat-icon-button
+          type="button"
+          aria-label="Clear"
+          (click)="clientForm.get('clientType')?.setValue(null)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-error> Please Select at least One Client Group</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="fill">
+      <mat-label class="form-field__label">Select A Coordinator</mat-label>
+      <mat-select formControlName="coordinatorName">
+        <mat-option
+          *ngFor="let coordinator of coordinators"
+          [value]="coordinator.name"
+        >
+          <p>
+            {{ coordinator.name }}
+          </p>
+        </mat-option>
+      </mat-select>
+      <div matSuffix style="display: flex">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <button
+          type="button"
+          mat-icon-button
+          type="button"
+          aria-label="Clear"
+          (click)="clientForm.get('coordinatorName')?.setValue(null)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+    </mat-form-field>
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label class="form-field__label">Choose Your Date Of Birth</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required="true"
+        formControlName="date"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker"
+        class="calendar-icon"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <section class="example-section">
+      <mat-slide-toggle
+        formControlName="sendSms"
+        class="example-margin"
+        [color]="'primary'"
+        [checked]="false"
+      >
+        Do Not Send SMS
+      </mat-slide-toggle>
+    </section>
+    <button mat-raised-button color="primary" [disabled]="clientForm.invalid" (click)="goNextPage()">
+      Next Step
+    </button>
+  </form>
+</body>

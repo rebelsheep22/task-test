@@ -1,0 +1,129 @@
+<body>
+  <form class="form" [formGroup]="addressForm">
+    <!-- index -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Index</mat-label>
+      <input formControlName="index" matInput type="text" placeholder="Index" />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="addressForm.get('index')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <!-- country -->
+    <mat-form-field appearance="fill">
+      <mat-label class="form-field__label">Select Country</mat-label>
+      <mat-select required="true" formControlName="country">
+        <mat-option
+          *ngFor="let country of countries$ | async"
+          [value]="country.name"
+        >
+          <p>
+            {{ country.name }}
+          </p>
+        </mat-option>
+      </mat-select>
+      <div matSuffix style="display: flex">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <button type="button" mat-icon-button type="button"  
+        (click)="addressForm.get('country')?.setValue(null)"
+        
+        aria-label="Clear">
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-error> Please Select Country</mat-error>
+    </mat-form-field>
+    <!-- area -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Area</mat-label>
+      <input formControlName="area" matInput type="text" placeholder="Area" />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="addressForm.get('area')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <!-- city -->
+    <mat-form-field appearance="fill">
+      <mat-label class="form-field__label">Select City</mat-label>
+      <mat-select
+        required="true"
+        formControlName="city"
+        [disabled]="!addressForm.get('country')?.value"
+      >
+        <mat-option *ngFor="let city of chosenCities$ | async" [value]="city">
+          <p>
+            {{ city }}
+          </p>
+        </mat-option>
+      </mat-select>
+      <div matSuffix style="display: flex">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <button
+          type="button"
+          (click)="addressForm.get('city')?.setValue(null)"
+          mat-icon-button
+          type="button"
+          aria-label="Clear"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-error> Please Select City</mat-error>
+    </mat-form-field>
+    <!-- street -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Street</mat-label>
+      <input
+        formControlName="street"
+        matInput
+        type="text"
+        placeholder="Street"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="addressForm.get('street')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <!-- house -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">House</mat-label>
+      <input formControlName="house" matInput type="text" placeholder="House" />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="addressForm.get('house')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      [disabled]="addressForm.invalid"
+      (click)="goNextPage()"
+    >
+      Next Step
+    </button>
+  </form>
+</body>

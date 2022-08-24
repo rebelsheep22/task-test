@@ -1,0 +1,97 @@
+@use 'src/styles/variables/colors' as *;
+:host{
+  --padding-bottom: 24px;
+  --height:auto;
+}
+.mat-form-field-appearance-fill {
+  .mat-form-field-wrapper .mat-form-field-flex {
+    border-radius: 4px;
+    height: var(--height);
+    padding: 6.5px 0.6em 1px 0.6em;
+    outline: 1px solid $zicron;
+    background-color: $lilyWhite;
+    font-size: 14px;
+    transition: outline 0.1s, background-color 0.1s;
+  }
+
+  .mat-form-field-wrapper .mat-form-field-flex:hover {
+    outline: 1px solid $iron;
+  }
+
+  &.mat-focused .mat-form-field-wrapper .mat-form-field-flex {
+    outline: 1px solid #00ADEE;
+    background-color: $lilyWhite;
+  }
+
+  &.form-field-with-value .mat-form-field-wrapper .mat-form-field-flex {
+    background-color: yellow;
+  }
+
+  .mat-form-field-wrapper .mat-form-field-underline,
+  .mat-form-field-wrapper .mat-form-field-underline::before {
+    visibility: hidden;
+  }
+
+  &.mat-form-field-can-float.mat-form-field-should-float
+    .mat-form-field-label-wrapper
+    .mat-form-field-label {
+    transform: translateY(-0.59375em) scale(0.85);
+  }
+
+  .mat-form-field-wrapper .mat-form-field-flex:focus-within {
+    .custom-input__label,
+    mat-label {
+      color: $riverBed;
+    }
+  }
+
+  &.form-field-with-value {
+    .custom-input__label,
+    mat-label {
+      color: blue;
+    }
+  }
+
+  .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+    padding: 0.6em 0 0.7em 0;
+  }
+  .mat-form-field-wrapper{
+    padding-bottom: var(--padding-bottom)
+  }
+
+  .mat-form-field-label-wrapper .mat-form-field-label {
+    margin-top: -0.2em;
+  }
+
+  &.mat-form-field-invalid.ng-touched {
+    .mat-form-field-wrapper .mat-form-field-flex {
+      outline: 1px solid red;
+    }
+  }
+
+  .mat-icon-button {
+    height: 24px !important;
+  }
+
+  &.form-field-textarea {
+    .mat-form-field-wrapper .mat-form-field-flex .mat-form-field-infix {
+      border-top: unset;
+    }
+
+    ::placeholder {
+      font-size: 13px;
+      color: silver;
+    }
+  }
+
+  .mat-bottom-sheet-container{
+    padding: 0px;
+  }
+  mat-error {
+    font-size: 11px;
+  }
+}
+
+::ng-deep .mat-button-focus-overlay {
+  background-color:transparent;
+}

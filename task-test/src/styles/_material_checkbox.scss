@@ -1,0 +1,38 @@
+@use 'src/styles/variables/colors' as *;
+
+// overwrite the checkbox background
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+.mat-checkbox-indeterminate .mat-checkbox-background {
+	background: $deepSkyBlue!important;
+}
+
+// overwrite the ripple overlay on hover and click
+::ng-deep
+	.mat-checkbox:not(.mat-checkbox-disabled)
+	.mat-checkbox-ripple
+	.mat-ripple-element {
+	background: $deepSkyBlue !important;
+}
+
+::ng-deep .mat-checkbox .mat-checkbox-frame {
+	border-color: $iron;
+}
+
+::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background,
+.mat-checkbox-indeterminate.mat-accent .mat-checkbox-background,
+.mat-accent .mat-pseudo-checkbox-checked,
+.mat-accent .mat-pseudo-checkbox-indeterminate,
+.mat-pseudo-checkbox-checked,
+::ng-deep .mat-option-pseudo-checkbox.mat-pseudo-checkbox-checked,
+.mat-pseudo-checkbox-indeterminate {
+	background: $deepSkyBlue !important;
+}
+
+::ng-deep .mat-checkbox-checked .mat-checkbox-background,
+::ng-deep .mat-checkbox-indeterminate .mat-checkbox-background {
+	background: $deepSkyBlue !important;
+}
+
+::ng-deep .mat-pseudo-checkbox {
+	color: $deepSkyBlue;
+}

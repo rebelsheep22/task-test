@@ -1,0 +1,33 @@
+@use 'src/styles/variables/colors' as *;
+@use 'src/styles/index';
+body{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-field{
+  &__label{
+    color: $raven;
+  }
+}
+
+
+.form{
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+}
+.calendar-icon{
+  color:$raven;
+}
+
+mat-form-field{
+  button{
+    background-color: transparent;
+    background-repeat: no-repeat;
+    border: none;
+    cursor: pointer;
+    overflow: hidden;
+    outline: none;
+  }
+}

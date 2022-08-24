@@ -1,0 +1,53 @@
+html,
+body,
+div,
+span,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+a,
+ol,
+ul,
+aside,
+label,
+footer,
+article,
+header,
+head,
+section,
+select {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	outline: 0;
+}
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+ol,
+li {
+	list-style: none;
+}
+a {
+	text-decoration: none;
+}
+input:focus,
+button:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+}
+
+body {
+	background-color: white;
+	margin: 0;
+}
+
