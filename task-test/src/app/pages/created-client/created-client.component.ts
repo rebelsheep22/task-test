@@ -18,9 +18,9 @@ export class CreatedClientComponent implements OnInit {
   constructor(private formService: FormService, private router: Router) { }
 
   ngOnInit(): void {    
-    this.clientPageDisplayForm = this.formService.clientPageForm;
-    this.addressPageDisplayForm = this.formService.addressPageForm;
-    this.identityPageDisplayForm = this.formService.identityPageForm;
+    this.formService.clientPageForm.reset();
+    this.formService.addressPageForm.reset();
+    this.formService.identityPageForm.reset();
   }
   redirectToRegistration(){
     this.router.navigate(['/client-form/client']);

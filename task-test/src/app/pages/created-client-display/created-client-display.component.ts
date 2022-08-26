@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { DomSanitizer } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { FormService } from 'src/app/services/form.service';
 
 @Component({
@@ -15,7 +15,7 @@ export class CreatedClientDisplayComponent implements OnInit {
   identityPageDisplayForm!: FormGroup;
   uploadedFile!: File;
   fileUrl!: any;
-   constructor(private formService: FormService, private sanitizer: DomSanitizer) { }
+   constructor(private formService: FormService,private router: Router) { }
  
    ngOnInit(): void { 
      this.clientPageDisplayForm = this.formService.clientPageForm;
@@ -23,5 +23,7 @@ export class CreatedClientDisplayComponent implements OnInit {
      this.identityPageDisplayForm = this.formService.identityPageForm;
    }
 
-
+   goBack(){
+    this.router.navigate(['/client-form']);
+  }
 }

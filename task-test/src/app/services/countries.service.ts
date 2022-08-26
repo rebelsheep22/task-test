@@ -15,7 +15,7 @@ export class CountriesService {
     let apiUrl = "https://countriesnow.space/api/v0.1/countries/cities";
     return this.httpService
       .post(apiUrl, {
-        country: country.toLowerCase(),
+        country: country?.toLowerCase(),
       })
       .pipe(
         map((res: any) => 
