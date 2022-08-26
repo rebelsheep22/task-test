@@ -1,0 +1,32 @@
+@use 'src/styles/variables/colors' as *;
+@use 'src/styles/index';
+header{
+  height: 90px;
+  background-color: $raven;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background-color: black;
+  h1{
+    padding-left: 40px;
+    color: $beluga;
+    font-weight: 900;
+  }
+}
+.container{
+  width: 20%;
+  h1{
+    padding-bottom: 30px;
+  }
+  form{
+    display: flex;
+    flex-direction:column;
+    
+  }
+}
+body{
+  margin-top: 30px;
+  display: flex;
+  justify-content: space-evenly;
+}

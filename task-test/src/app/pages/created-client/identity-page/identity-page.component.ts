@@ -40,7 +40,7 @@ durationInSeconds = 5;
     this.formService.saveIdentityForm(this.identityForm);
     setTimeout(() => {
       this.router.navigate(['/created-client']);
-    }, this.durationInSeconds* 1000);
+    }, this.durationInSeconds * 100);
     this.openSnackBar();
   }
   goBack(){

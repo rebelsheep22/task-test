@@ -2,12 +2,16 @@
 @use 'src/styles/index';
 header{
   height: 90px;
-  background-color: $raven;
   margin-bottom: 10px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-
+  background-color: black;
+  h1{
+    padding-left: 40px;
+    color: $beluga;
+    font-weight: 900;
+  }
 }
 body{
   display: flex;

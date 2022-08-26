@@ -4,8 +4,12 @@ import { FormGuard } from './helpers/form.guard';
 
 const routes: Routes = [
   {
+    path: '',
+    redirectTo: 'client-form',
+    pathMatch: 'full'
+  },
+  {
     path: 'client-form',
-    
     children: [
       {
         path: '',

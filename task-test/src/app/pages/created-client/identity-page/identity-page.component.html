@@ -1,127 +1,146 @@
 <header>
-  <h1> 3. Identity Information</h1>
-  <button mat-raised-button color="primary" (click)="goBack()">
-    Go Back
-     </button>
+  <h1>3. Identity Information</h1>
+  <button mat-raised-button color="primary" style="background-color:#4f5658; margin-right: 40px;" (click)="goBack()">Go Back</button>
 </header>
 <body>
   <form class="form" [formGroup]="identityForm">
-   <!-- documenttype -->
+    <!-- documenttype -->
 
-   <mat-form-field appearance="fill">
-    <mat-label class="form-field__label">Select Document Type</mat-label>
-    <mat-select formControlName="documentType" required="true">
-      <mat-option *ngFor="let type of documentTypes" [value]="type.name">
-        <p>
-          {{ type.name }}
-        </p>
-      </mat-option>
-    </mat-select>
-    <div matSuffix style="display: flex">
-      <mat-icon>keyboard_arrow_down</mat-icon>
+    <mat-form-field appearance="fill">
+      <mat-label class="form-field__label">Select Document Type</mat-label>
+      <mat-select formControlName="documentType" required="true">
+        <mat-option *ngFor="let type of documentTypes" [value]="type.name">
+          <p>
+            {{ type.name }}
+          </p>
+        </mat-option>
+      </mat-select>
+      <div matSuffix style="display: flex">
+        <mat-icon>keyboard_arrow_down</mat-icon>
+        <button
+          type="button"
+          mat-icon-button
+          type="button"
+          aria-label="Clear"
+          (click)="identityForm.get('documentType')?.setValue(null)"
+        >
+          <mat-icon>close</mat-icon>
+        </button>
+      </div>
+      <mat-error> Please Select at least One Client Group</mat-error>
+    </mat-form-field>
+    <!-- Series -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Series</mat-label>
+      <input
+        formControlName="series"
+        matInput
+        type="text"
+        placeholder="Series"
+      />
       <button
         type="button"
+        matSuffix
         mat-icon-button
         type="button"
         aria-label="Clear"
-        (click)="identityForm.get('documentType')?.setValue(null)"
+        (click)="identityForm.get('series')?.setValue(null)"
       >
         <mat-icon>close</mat-icon>
       </button>
-    </div>
-    <mat-error> Please Select at least One Client Group</mat-error>
-  </mat-form-field>
-   <!-- Series -->
-   <mat-form-field class="form-field" appearance="fill">
-    <mat-label class="form-field__label">Series</mat-label>
-    <input
-      formControlName="series"
-      matInput
-      type="text"
-      placeholder="Series"
-    />
-    <button
-      type="button"
-      matSuffix
-      mat-icon-button
-      type="button"
-      aria-label="Clear"
-      (click)="identityForm.get('series')?.setValue(null)"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-error><p>This Field Is Required</p></mat-error>
-  </mat-form-field>
-   <!-- Number -->
-   
-   <mat-form-field class="form-field" appearance="fill">
-    <mat-label class="form-field__label">Number</mat-label>
-    <input
-      matInput
-      type="number"
-      formControlName="number"
-      placeholder="Number"
-    />
-    <button
-      type="button"
-      matSuffix
-      mat-icon-button
-      type="button"
-      aria-label="Clear"
-      (click)="identityForm.get('number')?.setValue(null)"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-error
-      ><p>This Field Is Required And Must Contain 12 numbers</p></mat-error
-    >
-  </mat-form-field>
+      <mat-error><p>This Field Is Required</p></mat-error>
+    </mat-form-field>
+    <!-- Number -->
 
-   <!-- Issued by -->
-   <mat-form-field class="form-field" appearance="fill">
-    <mat-label class="form-field__label">Issued By</mat-label>
-    <input
-      formControlName="issuer"
-      matInput
-      type="text"
-      placeholder="Issued By"
-    />
-    <button
-      type="button"
-      matSuffix
-      mat-icon-button
-      type="button"
-      aria-label="Clear"
-      (click)="identityForm.get('issuer')?.setValue(null)"
-    >
-      <mat-icon>close</mat-icon>
-    </button>
-    <mat-error><p>This Field Is Required</p></mat-error>
-  </mat-form-field>
-   <!-- date of issue -->
-   <mat-form-field appearance="fill" class="form-field">
-    <mat-label class="form-field__label">Choose The Date of Issue</mat-label>
-    <input
-      matInput
-      [matDatepicker]="picker"
-      required="true"
-      formControlName="dateOfIssue"
-    />
-    <mat-hint>MM/DD/YYYY</mat-hint>
-    <mat-datepicker-toggle
-      matSuffix
-      [for]="picker"
-      class="calendar-icon"
-    ></mat-datepicker-toggle>
-    <mat-datepicker #picker></mat-datepicker>
-  </mat-form-field>
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Number</mat-label>
+      <input
+        matInput
+        type="number"
+        formControlName="number"
+        placeholder="Number"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="identityForm.get('number')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error
+        ><p>This Field Is Required And Must Contain 12 numbers</p></mat-error
+      >
+    </mat-form-field>
 
-   <!-- file
+    <!-- Issued by -->
+    <mat-form-field class="form-field" appearance="fill">
+      <mat-label class="form-field__label">Issued By</mat-label>
+      <input
+        formControlName="issuer"
+        matInput
+        type="text"
+        placeholder="Issued By"
+      />
+      <button
+        type="button"
+        matSuffix
+        mat-icon-button
+        type="button"
+        aria-label="Clear"
+        (click)="identityForm.get('issuer')?.setValue(null)"
+      >
+        <mat-icon>close</mat-icon>
+      </button>
+      <mat-error><p>This Field Is Required</p></mat-error>
+    </mat-form-field>
+    <!-- date of issue -->
+    <mat-form-field appearance="fill" class="form-field">
+      <mat-label class="form-field__label">Choose The Date of Issue</mat-label>
+      <input
+        matInput
+        [matDatepicker]="picker"
+        required="true"
+        formControlName="dateOfIssue"
+      />
+      <mat-hint>MM/DD/YYYY</mat-hint>
+      <mat-datepicker-toggle
+        matSuffix
+        [for]="picker"
+        class="calendar-icon"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <!-- file
    -->
-   <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)"/>
-<button mat-flat-button color="primary" type="button" (click)="csvInput.click()">Choose File</button>
-   <button mat-raised-button color="primary" type="button" [disabled]="identityForm.invalid" (click)="goNextPage()">
-    Finalize
-  </button>
+    <input
+      #csvInput
+      hidden="true"
+      type="file"
+      onclick="this.value=null"
+      (change)="csvInputChange($event)"
+    />
+    <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      (click)="csvInput.click()"
+      style="background-color:#c0cbce; margin-bottom: 40px; margin-top: 24px;"
+    >
+      Choose File
+    </button>
+    <button
+      mat-raised-button
+      color="primary"
+      type="button"
+      [disabled]="identityForm.invalid"
+      (click)="goNextPage()"
+      style="background-color: black; color: white"
+    >
+      Finish
+    </button>
   </form>
 </body>

@@ -1,8 +1,6 @@
 <header>
-  <h1> 2. Address Information</h1>
-  <button mat-raised-button color="primary" (click)="goBack()">
- Go Back
-  </button>
+  <h1>2. Address Information</h1>
+  <button mat-raised-button color="primary" style="background-color:#4f5658; margin-right: 40px;" (click)="goBack()">Go Back</button>
 </header>
 <body>
   <form class="form" [formGroup]="addressForm">
@@ -36,10 +34,13 @@
       </mat-select>
       <div matSuffix style="display: flex">
         <mat-icon>keyboard_arrow_down</mat-icon>
-        <button type="button" mat-icon-button type="button"  
-        (click)="addressForm.get('country')?.setValue(null)"
-        
-        aria-label="Clear">
+        <button
+          type="button"
+          mat-icon-button
+          type="button"
+          (click)="addressForm.get('country')?.setValue(null)"
+          aria-label="Clear"
+        >
           <mat-icon>close</mat-icon>
         </button>
       </div>
@@ -129,6 +130,7 @@
       type="button"
       [disabled]="addressForm.invalid"
       (click)="goNextPage()"
+      style="background-color: black; color: white"
     >
       Next Step
     </button>

@@ -1,96 +1,14 @@
 <header>
-  <h1>Client Information</h1>
+  <h1>Create Client</h1>
 </header>
 <body>
-  <div class="container">
-    <h1>Client Page Information</h1>
-  <form [formGroup]="clientPageDisplayForm">
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Last Name</mat-label>
-    <input formControlName="lastName" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">First Name</mat-label>
-    <input formControlName="firstName" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Middle Name</mat-label>
-    <input formControlName="middleName" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Phone Number</mat-label>
-    <input formControlName="phoneNumber" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Gender</mat-label>
-    <input formControlName="gender" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Client Type</mat-label>
-    <input formControlName="clientType" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Coordinator Name</mat-label>
-    <input formControlName="coordinatorName" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Birth Date</mat-label>
-    <input formControlName="date" matInput type="text" readonly />
-  </mat-form-field>
-</form>
-</div>
-<div class="container">
-  <h1>Address Page Information</h1>
-  <form [formGroup]="addressPageDisplayForm">
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Country Of Residence</mat-label>
-    <input formControlName="country" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">City</mat-label>
-    <input formControlName="city" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Index</mat-label>
-    <input formControlName="index" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Area Number</mat-label>
-    <input formControlName="area" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Street Name</mat-label>
-    <input formControlName="street" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">House</mat-label>
-    <input formControlName="house" matInput type="text" readonly />
-  </mat-form-field>
-</form>
-</div>
-<div class="container">
-  <h1>Identity Information</h1>
-  <form [formGroup]="identityPageDisplayForm">
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Document Type</mat-label>
-    <input formControlName="documentType" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Series</mat-label>
-    <input formControlName="series" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Document N:</mat-label>
-    <input formControlName="number" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Issuer Name</mat-label>
-    <input formControlName="issuer" matInput type="text" readonly />
-  </mat-form-field>
-  <mat-form-field class="form-field" appearance="fill" aria-readonly="true">
-    <mat-label class="form-field__label">Date of Issue</mat-label>
-    <input formControlName="dateOfIssue" matInput type="text" readonly />
-  </mat-form-field>
-</form>
-</div>
+  <button
+      mat-flat-button
+      color="primary"
+      type="button"
+      style="background-color:#e9e9e9; margin-bottom: 40px; margin-top: 24px;"
+      (click)="redirectToRegistration()"
+    >
+      Register User
+    </button>
 </body>

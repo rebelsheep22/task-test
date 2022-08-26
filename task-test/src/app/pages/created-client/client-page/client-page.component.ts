@@ -30,7 +30,11 @@ export class ClientPageComponent implements OnInit {
     sessionStorage.setItem('canGoNextStep', 'false');
   }
   goNextPage(){
+    this.router.navigate(['/client-form/address']);
     this.formService.saveClientForm(this.clientForm);
     sessionStorage.setItem('canGoNextStep', 'true');
+  }
+  goBack(){
+    this.router.navigate(['/client-form']);
   }
 }

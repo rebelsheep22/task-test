@@ -33,7 +33,7 @@ export const fader =
 
 export const slider =
   trigger('routeAnimations', [
-    transition('* => isClient', slideTo('left') ),
+    transition('* => isClient', slideTo('right') ),
     transition('* => isAddress', slideTo('right') ),
     transition('* => isIdentity', slideTo('right') ),
     transition('isClient => *', slideTo('left') ),
