@@ -8,6 +8,7 @@ export class FormService {
   clientPageForm! : FormGroup;
   addressPageForm! : FormGroup;
   identityPageForm! : FormGroup;
+  file!: File;
   displayForm! : FormGroup;
   constructor(
     private formBuilder: FormBuilder
@@ -65,5 +66,8 @@ export class FormService {
   //   this.displayForm = new FormGroup({form1:this.clientPageForm,form2:this.addressPageForm, form3: this.identityPageForm});
   //   return this.displayForm;
   // }
-
+  uploadFile(m : File){
+     this.file = m;
+     return this.file;
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { DomSanitizer } from '@angular/platform-browser';
 import { FormService } from 'src/app/services/form.service';
 
 @Component({
@@ -12,13 +13,15 @@ export class CreatedClientDisplayComponent implements OnInit {
   clientPageDisplayForm! : FormGroup;
   addressPageDisplayForm! : FormGroup;
   identityPageDisplayForm!: FormGroup;
+  uploadedFile!: File;
+  fileUrl!: any;
+   constructor(private formService: FormService, private sanitizer: DomSanitizer) { }
  
-   constructor(private formService: FormService) { }
- 
-   ngOnInit(): void {    
+   ngOnInit(): void { 
      this.clientPageDisplayForm = this.formService.clientPageForm;
      this.addressPageDisplayForm = this.formService.addressPageForm;
      this.identityPageDisplayForm = this.formService.identityPageForm;
    }
+
 
 }

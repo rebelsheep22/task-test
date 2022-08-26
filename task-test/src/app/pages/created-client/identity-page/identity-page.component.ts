@@ -14,7 +14,7 @@ export class IdentityPageComponent implements OnInit {
 identityForm!: FormGroup;
 documentTypes!: any[];
 durationInSeconds = 5;
-
+fileName = '';
   constructor(
     private router: Router,
     private _snackBar: MatSnackBar,
@@ -30,6 +30,16 @@ durationInSeconds = 5;
   }
   csvInputChange(fileInputEvent: any) {
     console.log(fileInputEvent.target.files[0]);
+    const file:File = fileInputEvent.target.files[0];
+    if (file) {
+
+      this.fileName = file.name;
+
+      const formData = new FormData();
+      this.formService.uploadFile(file);
+      formData.append("thumbnail", file);
+      
+  }
   }
   openSnackBar() {
     this._snackBar.openFromComponent(SnackbarComponent, {
