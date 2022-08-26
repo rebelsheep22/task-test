@@ -1,42 +1,61 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { slider } from 'src/app/route-animation';
+import {MatSnackBar} from '@angular/material/snack-bar';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-identity-page',
   templateUrl: './identity-page.component.html',
-  styleUrls: ['./identity-page.component.scss']
+  styleUrls: ['./identity-page.component.scss'],
 })
 export class IdentityPageComponent implements OnInit {
 identityForm!: FormGroup;
 documentTypes!: any[];
+durationInSeconds = 5;
 
   constructor(
-    private formBuilder: FormBuilder, private router: Router
-  ) { }
+    private router: Router,
+    private _snackBar: MatSnackBar,
+    private formService: FormService  ) { }
 
   ngOnInit(): void {
-    this.buildForm();
+    this.identityForm = this.formService.identityPageForm;
     this.documentTypes = [
       { name: 'Passport' },
       { name: 'Birth Certificate' },
       { name: 'Driving License'}
     ];
   }
-  buildForm(){
-    this.identityForm = this.formBuilder.group({
-      documentType: [null,Validators.required],
-      series: [null],
-      number: [
-        null,
-        [Validators.pattern('^[0-9]'), Validators.required],
-      ],
-      issuer: [null],
-      dateOfIssue: [null, Validators.required]
-    })
+  csvInputChange(fileInputEvent: any) {
+    console.log(fileInputEvent.target.files[0]);
   }
-  
+  openSnackBar() {
+    this._snackBar.openFromComponent(SnackbarComponent, {
+      duration: this.durationInSeconds * 1000,
+    });
+  }
   goNextPage(){
-    this.router.navigate(['/client-form/address'])
+    this.formService.saveIdentityForm(this.identityForm);
+    setTimeout(() => {
+      this.router.navigate(['/created-client']);
+    }, this.durationInSeconds* 1000);
+    this.openSnackBar();
+  }
+  goBack(){
+    this.router.navigate(['/client-form/client']);
   }
 }
+@Component({
+  selector: 'app-snackbar',
+  templateUrl: 'snackbar.component.html',
+  styles: [
+    `
+    .snackbar {
+      color: hotpink;
+    }
+  `,
+  ],
+})
+export class SnackbarComponent {}

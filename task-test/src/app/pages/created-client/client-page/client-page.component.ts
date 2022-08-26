@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-client-page',
@@ -11,8 +12,11 @@ export class ClientPageComponent implements OnInit {
   coordinators!: any[];
   clientTypes!: any[];
   clientForm!: FormGroup;
-  constructor(private formBuilder: FormBuilder, private router: Router) {}
+  canGoNextStep = false;
+  constructor(private formBuilder: FormBuilder, private router: Router, private formService : FormService, private cd: ChangeDetectorRef) {}
   ngOnInit(): void {
+    this.clientForm = this.formService.clientPageForm;
+    console.log(this.clientForm)
     this.coordinators = [
       { name: 'Jhones' },
       { name: 'Collinwood' },
@@ -23,26 +27,10 @@ export class ClientPageComponent implements OnInit {
       { name: 'Sinclair' },
     ];
     this.clientTypes = ['VIP Clients', 'Loyal Clients', 'New Clients'];
-    this.buildForm();
+    sessionStorage.setItem('canGoNextStep', 'false');
   }
-  buildForm() {
-    this.clientForm = this.formBuilder.group({
-      lastName: [null, Validators.required],
-      firstName: [null, Validators.required],
-      middleName: [null],
-      phoneNumber: [
-        null,
-        [Validators.pattern('^[0-9]{11}$'), Validators.required],
-      ],
-      gender: [null],
-      clientType: [[], Validators.required],
-      coordinatorName: [],
-      date: [Validators.required],
-      sendSms: [],
-    });
-  }
-
   goNextPage(){
-    this.router.navigate(['/client-form/address'])
+    this.formService.saveClientForm(this.clientForm);
+    sessionStorage.setItem('canGoNextStep', 'true');
   }
 }

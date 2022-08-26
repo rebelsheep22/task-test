@@ -1,16 +1,26 @@
 @use 'src/styles/variables/colors' as *;
 @use 'src/styles/index';
+header{
+  height: 90px;
+  background-color: $raven;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+}
 body{
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .form-field{
+  padding-bottom: 20px;
   &__label{
     color: $raven;
   }
+  &__radio{
+    padding-bottom: 20px;
+  }
 }
-
 
 .form{
   display: flex;

@@ -1,3 +1,6 @@
+<header>
+      <h1> 1. Client Information</h1>
+</header>
 <body>
   <form class="form" [formGroup]="clientForm">
     <mat-form-field class="form-field" appearance="fill">
@@ -96,7 +99,7 @@
       <mat-radio-button type="button" value="other">Other</mat-radio-button>
     </mat-radio-group>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
       <mat-label class="form-field__label">Select Client Group</mat-label>
       <mat-select formControlName="clientType" required="true" multiple="true">
         <mat-option *ngFor="let type of clientTypes" [value]="type">
@@ -120,7 +123,7 @@
       <mat-error> Please Select at least One Client Group</mat-error>
     </mat-form-field>
 
-    <mat-form-field appearance="fill">
+    <mat-form-field appearance="fill" class="form-field">
       <mat-label class="form-field__label">Select A Coordinator</mat-label>
       <mat-select formControlName="coordinatorName">
         <mat-option
@@ -171,7 +174,7 @@
         Do Not Send SMS
       </mat-slide-toggle>
     </section>
-    <button mat-raised-button color="primary" [disabled]="clientForm.invalid" (click)="goNextPage()">
+    <button mat-raised-button color="primary" type="button" (disabled)="clientForm.invalid" (click)="goNextPage()" [routerLink]="['/client-form/address']" routerLinkActive="router-link-active" >
       Next Step
     </button>
   </form>

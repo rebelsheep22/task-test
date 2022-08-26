@@ -1,5 +1,13 @@
 @use 'src/styles/variables/colors' as *;
 @use 'src/styles/index';
+header{
+  height: 90px;
+  background-color: $raven;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 body{
   display: flex;
   justify-content: center;

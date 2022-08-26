@@ -1,3 +1,9 @@
+<header>
+  <h1> 2. Address Information</h1>
+  <button mat-raised-button color="primary" (click)="goBack()">
+ Go Back
+  </button>
+</header>
 <body>
   <form class="form" [formGroup]="addressForm">
     <!-- index -->
@@ -120,6 +126,7 @@
     <button
       mat-raised-button
       color="primary"
+      type="button"
       [disabled]="addressForm.invalid"
       (click)="goNextPage()"
     >

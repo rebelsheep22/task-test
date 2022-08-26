@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { CountriesService } from 'src/app/services/countries.service';
+import { FormService } from 'src/app/services/form.service';
 
 @Component({
   selector: 'app-address-page',
@@ -16,12 +17,12 @@ export class AddressPageComponent implements OnInit {
   constructor(
     private countriesService: CountriesService,
     private formBuilder: FormBuilder,
-    private router: Router
+    private router: Router,
+    private formService: FormService
   ) { }
 
   ngOnInit(): void {
-    this.buildForm();
-
+   this.addressForm = this.formService.addressPageForm;
    this.getCountry();
    this.trackCountryChange()
   }
@@ -31,16 +32,6 @@ export class AddressPageComponent implements OnInit {
   getCity(n : string){
     this.chosenCities$ = this.countriesService.getCities(n);
   }
-  buildForm() {
-    this.addressForm = this.formBuilder.group({
-      country: [null, Validators.required],
-      city: [null, Validators.required],
-      index: [null],
-      area: [null],
-      street: [null],
-      house: [null]
-    });
-  }
   trackCountryChange(){
     this.addressForm.get('country')?.valueChanges.subscribe(m=>{
       this.getCity(m);
@@ -48,7 +39,11 @@ export class AddressPageComponent implements OnInit {
     })
   }
   goNextPage(){
-    this.router.navigate(['/client-form/identity'])
+    this.formService.saveAddressForm(this.addressForm)
+    this.router.navigate(['/client-form/identity']);
+  }
+  goBack(){
+    this.router.navigate(['/client-form/client']);
   }
 
 }

@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { FormGuard } from './helpers/form.guard';
 
 const routes: Routes = [
   {
     path: 'client-form',
+    
     children: [
       {
         path: '',
@@ -12,7 +14,22 @@ const routes: Routes = [
           (m)=> m.CreatedClientModule
         )
       }
-    ]
+    ],
+    
+  },
+  {
+    path: 'created-client',
+    canActivate: [FormGuard],
+    children: [
+      {
+        path: '',
+        loadChildren: () =>
+        import('./pages/created-client-display/created-client-display.module').then(
+          (m)=> m.CreatedClientDisplayModule
+        )
+      }
+    ],
+    
   }
 ];
 

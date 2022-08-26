@@ -1,3 +1,9 @@
+<header>
+  <h1> 3. Identity Information</h1>
+  <button mat-raised-button color="primary" (click)="goBack()">
+    Go Back
+     </button>
+</header>
 <body>
   <form class="form" [formGroup]="identityForm">
    <!-- documenttype -->
@@ -5,7 +11,7 @@
    <mat-form-field appearance="fill">
     <mat-label class="form-field__label">Select Document Type</mat-label>
     <mat-select formControlName="documentType" required="true">
-      <mat-option *ngFor="let type of documentTypes" [value]="type">
+      <mat-option *ngFor="let type of documentTypes" [value]="type.name">
         <p>
           {{ type.name }}
         </p>
@@ -67,7 +73,7 @@
       <mat-icon>close</mat-icon>
     </button>
     <mat-error
-      ><p>This Field Is Required And Must Contain only numbers</p></mat-error
+      ><p>This Field Is Required And Must Contain 12 numbers</p></mat-error
     >
   </mat-form-field>
 
@@ -112,7 +118,9 @@
 
    <!-- file
    -->
-   <button mat-raised-button color="primary" [disabled]="identityForm.invalid" (click)="goNextPage()">
+   <input #csvInput hidden="true" type="file" onclick="this.value=null" (change)="csvInputChange($event)"/>
+<button mat-flat-button color="primary" type="button" (click)="csvInput.click()">Choose File</button>
+   <button mat-raised-button color="primary" type="button" [disabled]="identityForm.invalid" (click)="goNextPage()">
     Finalize
   </button>
   </form>
